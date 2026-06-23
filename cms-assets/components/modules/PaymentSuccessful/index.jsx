@@ -17,5 +17,5 @@ export const Component = ({ fieldValues }) => {
 export { fields } from './fields.jsx';
 
 export const meta = {
-  label: `Payment Success - Redirect V2`,
+  label: `Payment Success - Redirect V3`,
 };

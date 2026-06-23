@@ -36,5 +36,5 @@ export const Component = ({ fieldValues }) => {
 export { fields } from './fields.jsx';
 
 export const meta = {
-  label: `Booking V2`,
+  label: `Booking V3`,
 };

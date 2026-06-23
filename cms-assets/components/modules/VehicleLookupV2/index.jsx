@@ -37,5 +37,5 @@ export const Component = ({ fieldValues }) => {
 export { fields } from './fields.jsx';
 
 export const meta = {
-  label: `Vehicle Lookup V2.1`,
+  label: `Vehicle Lookup V3.1`,
 };
