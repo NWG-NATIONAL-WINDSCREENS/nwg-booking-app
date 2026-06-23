@@ -1,0 +1,53 @@
+name: Build and deploy to HubSpot
+
+# develop -> staging profile (account 443351915)
+# To add production later: add `main` to the branches list below.
+# The workflow already routes `main` -> prod profile (account 441426038).
+#
+# NOTE: This is a @hubspot/cms-components (platformVersion 2025.1) project.
+# `hs project upload` ships the source and HubSpot builds it remotely, so there
+# is NO local webpack/vite build step here (unlike nwg-project-functions). The
+# app's secrets (GOOGLE_API_KEY, SIGNING_SECRET) are HubSpot runtime secrets
+# managed with `hs secret add`, not values inlined at build time.
+on:
+  push:
+    branches:
+      - develop
+      # - main   # uncomment once the `prod` GitHub Environment is populated
+
+# Don't let two pushes deploy to the same environment at once.
+concurrency:
+  group: hubspot-${{ github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    # Picks the GitHub Environment that holds this branch's secrets.
+    # develop -> "staging", main -> "prod".
+    environment: ${{ github.ref_name == 'main' && 'prod' || 'staging' }}
+
+    env:
+      # HubSpot CLI auth — sourced from the selected Environment's secrets.
+      DEFAULT_ACCOUNT_ID: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+      DEFAULT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload project to HubSpot
+        # Uploads from the repo root (hsproject.json srcDir is "."). The profile
+        # selects which account via hsprofile.<profile>.json. HubSpot builds the
+        # cms-assets bundle server-side as part of the upload.
+        uses: HubSpot/hubspot-project-actions/project-upload@v1.1.0
+        with:
+          profile: ${{ github.ref_name == 'main' && 'prod' || 'staging' }}
+          account_id: ${{ secrets.HUBSPOT_ACCOUNT_ID }}
+          personal_access_key: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+          # No project-deploy step: deploy is gated manually in HubSpot
+          # (or via HubSpot's "Auto-deploy successful builds" setting).
