@@ -4,7 +4,7 @@ name: Build and deploy to HubSpot
 # To add production later: add `main` to the branches list below.
 # The workflow already routes `main` -> prod profile (account 441426038).
 #
-# NOTE: This is a @hubspot/cms-components (platformVersion 2025.1) project.
+# NOTE: This is a @hubspot/cms-components (platformVersion 2026.03) project.
 # `hs project upload` ships the source and HubSpot builds it remotely, so there
 # is NO local webpack/vite build step here (unlike nwg-project-functions). The
 # app's secrets (GOOGLE_API_KEY, SIGNING_SECRET) are HubSpot runtime secrets
@@ -41,9 +41,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Upload project to HubSpot
-        # Uploads from the repo root (hsproject.json srcDir is "."). The profile
-        # selects which account via hsprofile.<profile>.json. HubSpot builds the
-        # cms-assets bundle server-side as part of the upload.
+        # Uploads from the repo root (hsproject.json srcDir is "src"). The profile
+        # selects which account via src/hsprofile.<profile>.json. HubSpot builds
+        # the cms-assets bundle server-side as part of the upload.
         uses: HubSpot/hubspot-project-actions/project-upload@v1.1.0
         with:
           profile: ${{ github.ref_name == 'main' && 'prod' || 'staging' }}

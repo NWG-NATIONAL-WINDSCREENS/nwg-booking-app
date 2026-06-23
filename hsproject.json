@@ -1,5 +1,5 @@
 {
   "name": "nwg-booking-v3",
-  "srcDir": ".",
-  "platformVersion": "2025.1"
+  "srcDir": "src",
+  "platformVersion": "2026.03"
 }

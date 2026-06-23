@@ -1,0 +1,8 @@
+{
+  "uid": "nwg-booking-cms-assets",
+  "type": "cms-assets",
+  "config": {
+    "themePath": "nwg-booking-app",
+    "secretNames": ["GOOGLE_API_KEY", "SIGNING_SECRET"]
+  }
+}
