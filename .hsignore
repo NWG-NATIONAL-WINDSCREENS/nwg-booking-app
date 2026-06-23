@@ -2,3 +2,11 @@ README.md
 tsconfig.json
 yarn.lock
 dist
+
+# patch-package writes patches whose filenames contain '@' (scoped packages),
+# e.g. @hubspot+cms-dev-server+1.2.25.patch, and `hs project upload` rejects '@'
+# in filenames. These patches only matter for the LOCAL dev server
+# (@hubspot/cms-dev-server is a devDependency, not installed in the remote
+# build), so keep them on disk for `npm start` but exclude them from upload.
+cms-assets/patches
+patches
