@@ -264,15 +264,6 @@ export default function UserDetailsForm() {
         // const payload = prepareAppointmentPayload(payload);
 
         await createAppointment(payload).unwrap();
-
-        console.log(
-          '*************************************************************',
-        );
-        console.log('Appointment Created');
-        console.log(
-          '*************************************************************',
-        );
-
         // Wait for state to be updated
         await dispatch(setBookingCreated());
         // Then update the state to HubSpot

@@ -93,7 +93,6 @@ export default function VehicleSearchRegistrationForm() {
     const handleResize = () => setIsMobile(window.innerWidth <= 600);
     handleResize(); // initialize
     window.addEventListener('resize', handleResize);
-    console.log('Resizing...');
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 

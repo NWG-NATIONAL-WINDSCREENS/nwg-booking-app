@@ -52,13 +52,6 @@ export const handleProgressStateChanges = async (
 
   try {
     await dispatch(thunk).unwrap();
-
-    console.log(
-      '*************************************************************',
-    );
-    console.log(
-      `Successfully ${update ? 'updated' : 'created'} enquiry progress`,
-    );
   } catch (e) {
     console.error(e);
   }

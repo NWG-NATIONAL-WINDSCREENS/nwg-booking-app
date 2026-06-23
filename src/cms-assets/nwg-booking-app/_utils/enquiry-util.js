@@ -83,7 +83,6 @@ export const prepareEnquiryPayload = (data, brand) => {
   if (enquiry_id) {
     payload.contact.uuid = enquiry_id;
   } else {
-    console.log('Generating Enquiry ID');
     payload.contact.uuid = generateEnquiryId();
   }
 
@@ -193,7 +192,6 @@ export const createSession = async (dispatch, sessionId) => {
   const thunk = sessionAPI.endpoints.createSession.initiate(sessionId);
   try {
     await dispatch(thunk).unwrap();
-    console.log('Session cookie set');
   } catch (e) {
     console.error(e);
   }

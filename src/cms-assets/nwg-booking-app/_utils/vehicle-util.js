@@ -61,6 +61,5 @@ const handleRedirect = (data) => {
     },
     '*',
   );
-  console.log('getVehicleDetails - postMessage sent for lookup details');
   window.top.location.replace(`${data.vehicle_lookup_param_redirect_to}`);
 };

@@ -161,12 +161,6 @@ export default function UploadField() {
     );
   });
 
-  // TODO: Need to check if there is any side effects
-  // useEffect(() => {
-  //   console.log(files);
-  //   return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
-  // }, [files]);
-
   return (
     <>
       <div className={'stepper-accordion upload'}>

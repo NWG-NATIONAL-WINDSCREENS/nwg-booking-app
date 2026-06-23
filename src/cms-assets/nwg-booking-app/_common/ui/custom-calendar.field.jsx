@@ -300,8 +300,6 @@ export default function CustomCalendarField({
         goToSlide(result.pageIndex, branchIndex);
         // Set calendar's change local state = false to reset
         setCalendarChange(false);
-      } else {
-        console.log('No match found even after fallback.');
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
