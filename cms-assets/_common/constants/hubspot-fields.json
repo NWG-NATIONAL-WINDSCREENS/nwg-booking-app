@@ -1,0 +1,502 @@
+{
+  "vehicle": [
+    {
+      "updatedAt": "2025-02-26T05:15:30.665Z",
+      "createdAt": "2025-02-26T05:15:30.665Z",
+      "name": "what_is_the_damage",
+      "label": "What is the Damage",
+      "type": "enumeration",
+      "fieldType": "select",
+      "description": "",
+      "groupName": "damage_information",
+      "options": [
+        {
+          "label": "Crack",
+          "value": "Crack",
+          "description": "",
+          "displayOrder": 0,
+          "hidden": false
+        },
+        {
+          "label": "1 Chip",
+          "value": "1 Chip",
+          "description": "",
+          "displayOrder": 1,
+          "hidden": false
+        },
+        {
+          "label": "2-3 Chips",
+          "value": "2-3 Chips",
+          "description": "",
+          "displayOrder": 2,
+          "hidden": false
+        },
+        {
+          "label": "4+ Chips",
+          "value": "4+ Chips",
+          "description": "",
+          "displayOrder": 3,
+          "hidden": false
+        }
+      ],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-26T05:17:24.348Z",
+      "createdAt": "2025-02-26T05:17:24.348Z",
+      "name": "damage_area",
+      "label": "Damage Area",
+      "type": "enumeration",
+      "fieldType": "select",
+      "description": "",
+      "groupName": "damage_information",
+      "options": [
+        {
+          "label": "Green Area",
+          "value": "Green Area",
+          "description": "",
+          "displayOrder": 0,
+          "hidden": false
+        },
+        {
+          "label": "White Area",
+          "value": "White Area",
+          "description": "",
+          "displayOrder": 1,
+          "hidden": false
+        }
+      ],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-26T05:14:11.506Z",
+      "createdAt": "2025-02-26T05:14:04.671Z",
+      "name": "damaged_window",
+      "label": "Damaged Window",
+      "type": "enumeration",
+      "fieldType": "select",
+      "description": "",
+      "groupName": "damage_information",
+      "options": [
+        {
+          "label": "Windscreen",
+          "value": "Windscreen",
+          "description": "",
+          "displayOrder": 0,
+          "hidden": false
+        },
+        {
+          "label": "Right Side Window",
+          "value": "Right Side Window",
+          "description": "",
+          "displayOrder": 1,
+          "hidden": false
+        },
+        {
+          "label": "Left Side Window",
+          "value": "Left Side Window",
+          "description": "",
+          "displayOrder": 2,
+          "hidden": false
+        },
+        {
+          "label": "Rear Window",
+          "value": "Rear Window",
+          "description": "",
+          "displayOrder": 3,
+          "hidden": false
+        },
+        {
+          "label": "Other (multiple windows, sunroof)",
+          "value": "Other",
+          "description": "",
+          "displayOrder": 4,
+          "hidden": false
+        }
+      ],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-26T05:16:42.556Z",
+      "createdAt": "2025-02-26T05:16:42.556Z",
+      "name": "impact_size",
+      "label": "Impact Size",
+      "type": "enumeration",
+      "fieldType": "select",
+      "description": "",
+      "groupName": "damage_information",
+      "options": [
+        {
+          "label": "Bigger than a $2 coin",
+          "value": "Bigger than a $2 coin",
+          "description": "",
+          "displayOrder": 0,
+          "hidden": false
+        },
+        {
+          "label": "Smaller than a $2 coin",
+          "value": "Smaller than a $2 coin",
+          "description": "",
+          "displayOrder": 1,
+          "hidden": false
+        }
+      ],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-13T02:26:38.909Z",
+      "createdAt": "2025-02-13T02:26:38.909Z",
+      "name": "registration_state",
+      "label": "Registration State",
+      "type": "enumeration",
+      "fieldType": "select",
+      "description": "",
+      "groupName": "vehicles_information",
+      "options": [
+        {
+          "label": "NSW",
+          "value": "NSW",
+          "description": "",
+          "displayOrder": 0,
+          "hidden": false
+        },
+        {
+          "label": "QLD",
+          "value": "QLD",
+          "description": "",
+          "displayOrder": 1,
+          "hidden": false
+        },
+        {
+          "label": "VIC",
+          "value": "VIC",
+          "description": "",
+          "displayOrder": 2,
+          "hidden": false
+        },
+        {
+          "label": "ACT",
+          "value": "ACT",
+          "description": "",
+          "displayOrder": 3,
+          "hidden": false
+        },
+        {
+          "label": "TAS",
+          "value": "TAS",
+          "description": "",
+          "displayOrder": 4,
+          "hidden": false
+        },
+        {
+          "label": "WA",
+          "value": "WA",
+          "description": "",
+          "displayOrder": 5,
+          "hidden": false
+        },
+        {
+          "label": "NT",
+          "value": "NT",
+          "description": "",
+          "displayOrder": 6,
+          "hidden": false
+        },
+        {
+          "label": "SA",
+          "value": "SA",
+          "description": "",
+          "displayOrder": 7,
+          "hidden": false
+        }
+      ],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-26T05:19:29.793Z",
+      "createdAt": "2025-02-26T05:19:29.793Z",
+      "name": "insurer",
+      "label": "Insurer",
+      "type": "string",
+      "fieldType": "text",
+      "description": "",
+      "groupName": "vehicles_information",
+      "options": [],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-26T05:19:42.591Z",
+      "createdAt": "2025-02-26T05:19:42.591Z",
+      "name": "policy_number",
+      "label": "Policy Number",
+      "type": "string",
+      "fieldType": "text",
+      "description": "",
+      "groupName": "vehicles_information",
+      "options": [],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-26T05:19:56.540Z",
+      "createdAt": "2025-02-26T05:19:56.540Z",
+      "name": "claim_number",
+      "label": "Claim Number",
+      "type": "string",
+      "fieldType": "text",
+      "description": "",
+      "groupName": "vehicles_information",
+      "options": [],
+      "createdUserId": "50706295",
+      "updatedUserId": "50706295",
+      "displayOrder": -1,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2025-02-18T03:29:18.337Z",
+      "createdAt": "2025-02-13T02:24:35.041Z",
+      "name": "registration",
+      "label": "Registration",
+      "type": "string",
+      "fieldType": "text",
+      "description": "",
+      "groupName": "vehicles_information",
+      "options": [],
+      "updatedUserId": "50706295",
+      "displayOrder": 0,
+      "calculated": false,
+      "externalOptions": false,
+      "archived": false,
+      "hasUniqueValue": true,
+      "hidden": false,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": false,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    }
+  ],
+  "contact": [
+    {
+      "updatedAt": "2024-09-05T17:14:04.747Z",
+      "createdAt": "2019-08-06T02:41:08.029Z",
+      "name": "firstname",
+      "label": "First Name",
+      "type": "string",
+      "fieldType": "text",
+      "description": "A contact's first name",
+      "groupName": "contactinformation",
+      "options": [],
+      "displayOrder": 0,
+      "calculated": false,
+      "externalOptions": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "hubspotDefined": true,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": true,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2024-09-05T17:14:04.747Z",
+      "createdAt": "2019-08-06T02:41:08.109Z",
+      "name": "lastname",
+      "label": "Last Name",
+      "type": "string",
+      "fieldType": "text",
+      "description": "A contact's last name",
+      "groupName": "contactinformation",
+      "options": [],
+      "displayOrder": 1,
+      "calculated": false,
+      "externalOptions": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "hubspotDefined": true,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": true,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2024-09-05T17:14:04.747Z",
+      "createdAt": "2019-08-06T02:41:08.204Z",
+      "name": "email",
+      "label": "Email",
+      "type": "string",
+      "fieldType": "text",
+      "description": "A contact's email address",
+      "groupName": "contactinformation",
+      "options": [],
+      "displayOrder": 3,
+      "calculated": false,
+      "externalOptions": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "hubspotDefined": true,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": true,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    },
+    {
+      "updatedAt": "2024-09-12T14:21:53.426Z",
+      "createdAt": "2019-08-06T02:41:08.269Z",
+      "name": "phone",
+      "label": "Phone Number",
+      "type": "string",
+      "fieldType": "phonenumber",
+      "description": "A contact's primary phone number",
+      "groupName": "contactinformation",
+      "options": [],
+      "displayOrder": 4,
+      "calculated": false,
+      "externalOptions": false,
+      "hasUniqueValue": false,
+      "hidden": false,
+      "hubspotDefined": true,
+      "modificationMetadata": {
+        "archivable": true,
+        "readOnlyDefinition": true,
+        "readOnlyValue": false
+      },
+      "formField": true,
+      "dataSensitivity": "non_sensitive"
+    }
+  ]
+}
+
+//https://developers.hubspot.com/docs/reference/api/marketing/forms/v3-legacy#submit-data-to-a-form-supporting-authentication
+
+//sample error
+//{
+//  "status": "error",
+//  "message": "Invalid input JSON: Unable to infer object type from: 2-179907134555",
+//  "correlationId": "473a00b6-8d0c-4592-9652-0a49cd8123fd"
+//}
+
+//sample success
+//{
+//  "inlineMessage": ""
+
+//}

@@ -1,0 +1,14 @@
+node_modules/
+hubspot.config.yml
+_hubspot.config.yml
+dist
+
+.idea
+coverage
+.env
+.env.development
+.env.production
+.env.local
+.DS_Store
+.claude
+archived.hubspot.config.yml

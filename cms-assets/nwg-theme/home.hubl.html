@@ -1,0 +1,20 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: DEV TESTING
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {% js_partial
+    path="@projects/nwg-project/nwg-booking-app/components/partials/home.jsx",
+    no_wrapper=True %}
+
+  {% dnd_area "dnd_area", class="main" %}
+    {% dnd_section %}
+
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+
+{% endblock body %}

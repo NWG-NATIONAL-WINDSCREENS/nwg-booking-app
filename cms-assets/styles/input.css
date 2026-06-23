@@ -1,0 +1,426 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Visby';
+  src:
+    url('../assets/fonts/VisbyRound-Light.woff2') format('woff2'),
+    url('../assets/fonts/VisbyRound-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Visby';
+  src:
+    url('../assets/fonts/VisbyRound-Regular.woff2') format('woff2'),
+    url('../assets/fonts/VisbyRound-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Visby';
+  src:
+    url('../assets/fonts/VisbyRound-Medium.woff') format('woff'),
+    url('../assets/fonts/VisbyRound-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Visby';
+  src:
+    url('../assets/fonts/VisbyRound-Bold.woff2') format('woff2'),
+    url('../assets/fonts/VisbyRound-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* League Spartan — AAG brand font. Single variable file covers the full
+   100–900 weight axis. Loaded for every visitor but only applied when
+   `html[data-brand="aag"]` is set (see override rule below). */
+@font-face {
+  font-family: 'League Spartan';
+  src:
+    url('../assets/fonts/LeagueSpartan-VariableFont_wght.woff2') format('woff2-variations'),
+    url('../assets/fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand primary — defaults to NWG. Override via [data-brand="aag"] below. */
+  --brand-primary: #00dc8c;
+  --brand-primary-hovered: #00b876;
+  --brand-primary-text: #000000;
+
+  --header-height: 118px;
+  --header-bg: #d9d9d9;
+
+  --booking-body-bg: #f1f1f1;
+  --btn-bg: #f1f1f1;
+
+  --btn-radius-full: 100px;
+  --btn-height: 46px;
+  --btn-width: 10rem;
+  --btn-disabled-bg: #bababa;
+
+  --btn-quote-bg: #05d6f5;
+  --btn-quote-bg-hovered: #04bad6ff;
+  --btn-quote-text: #ffffff;
+
+  --btn-help-bg: #05d6f5;
+  --btn-help-text: #ffffff;
+
+  --btn-change-bg: #ffffff;
+  --btn-change-text: #000000;
+  --btn-change-border: #bababa;
+  --btn-change-bg-hovered: #e0e0e0;
+
+  --btn-confirm-bg: #ffffff;
+  --btn-confirm-text: #000000;
+  --btn-confirm-border: #bababa;
+  --btn-confirm-bg-hovered: #eeeeee;
+  /* Confirm button border/hover gradient. NWG default: brand-primary → purple.
+     Overridden in [data-brand='aag'] below. */
+  --btn-confirm-gradient: linear-gradient(to right, var(--brand-primary), #a587fa);
+
+  --btn-cancel-bg: #05d6f5;
+  --btn-cancel-text: #ffffff;
+
+  --btn-submit-bg: #05d6f5;
+  --btn-submit-text: #ffffff;
+
+  /* border-outline #D2D2D2 */
+  --input-outline-bg: #d2d2d2;
+
+  --field-skeleton-label-bg: #eeeded;
+  --field-skeleton-control-bg: #eeeded;
+
+  --radio-selected-bg: var(--brand-primary);
+  --radio-bg: #eee;
+
+  --stepper-bg: var(--brand-primary);
+  --stepper-bg-hovered: var(--brand-primary-hovered);
+
+  --text-green: var(--brand-primary);
+  --issue-contact-bg: #61a8ff;
+
+  --dropdown-selected-bg: var(--brand-primary);
+  --dropdown-text-selected-bg: var(--brand-primary);
+
+  --error-colour: #ff0000;
+
+  --calendar-now-bg: #d3f6eae8;
+  --calendar-now-bg-hovered: #d3f6eae8;
+  --calendar-now-text: #000000;
+  --calendar-selected-bg: var(--brand-primary);
+
+  --chip-border: #d2d2d2;
+  --chip-bg: transparent;
+  --chip-selected-bg: var(--brand-primary);
+  --chip-bg-hovered: var(--brand-primary-hovered);
+
+  --chip-container-border: #d2d2d2;
+  --chip-container-border-selected: var(--brand-primary);
+}
+
+[data-brand='aag'] {
+  /* Must stay in sync with --color-primary-700 / --color-primary-800 in
+     aag-web-app/app/globals.css (AAG's SAPPHIRE + darker sapphire). */
+  --brand-primary: #005d82;
+  --brand-primary-hovered: #003e57;
+  --brand-primary-text: #ffffff;
+
+  /* SAPPHIRE → CYAN — clean 2-stop brand gradient. */
+  --btn-confirm-gradient: linear-gradient(to right, #005d82, #00adef);
+}
+
+[data-brand='aag'] .brand-invert {
+  filter: brightness(0) invert(1);
+}
+
+/* Wins over the `*` rule inside `@layer utilities` because `[data-brand='aag'] *`
+   is more specific (0,1,0 vs 0,0,0). Also placed outside any `@layer`, which
+   further bumps its cascade priority above layered declarations. */
+[data-brand='aag'] * {
+  font-family: 'League Spartan', sans-serif;
+}
+
+.field--error {
+  @apply outline-1 -outline-offset-1 outline-red-300 placeholder:text-red-300
+    focus:outline-2 focus:-outline-offset-2 focus:outline-red-600 sm:pr-9;
+}
+
+.confirmation-next-steps li,
+.payment-selection li,
+.upload li {
+  list-style-type: disc;
+  margin: 0 24px;
+}
+
+.stepper-accordion button {
+  border: none !important;
+}
+
+.ant-picker-input input {
+  font-size: 16px !important;
+}
+
+@layer utilities {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Visby', sans-serif;
+  }
+
+  .opacity-1 {
+    opacity: 100%;
+  }
+
+  @media (max-width: 1295px) and (min-width: 1024px) {
+    .grid-cols-responsive {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .header-custom {
+      font-size: 26px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .react-calendar__navigation {
+      padding: 0 24px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .react-calendar__navigation {
+      padding: 24px 24px 0;
+    }
+  }
+}
+
+.custom-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.spinner-content {
+  width: 250px;
+}
+
+.spinner-cancel-button {
+  margin-top: 24px;
+}
+
+.custom-spinner .ant-spin-text,
+.custom-spinner .ant-spin-dot-holder {
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+/*CUSTOM CSS FORM REACT CALENDAR*/
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* MONTH YEAR ORDER */
+.react-calendar__navigation__label {
+  pointer-events: none;
+  order: 1;
+  flex-grow: 0;
+  text-align: left;
+}
+
+/* MONTH NEXT AND RIGHT ORDER */
+.react-calendar__navigation__prev-button,
+.react-calendar__navigation__next-button {
+  order: 2;
+}
+
+/* HIDES YEAR L/R */
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+
+/*DAY M-F */
+.react-calendar__month-view__weekdays__weekday {
+  text-align: center;
+  padding: 20px;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+  text-transform: initial;
+  font-weight: 700;
+}
+
+/*DAY BORDER*/
+.react-calendar__tile {
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  background: white;
+  padding: 20px;
+  margin: 0;
+  transition: background-color 0.3s ease;
+}
+
+/*DAY BORDER*/
+.react-calendar__month-view__days__day {
+  box-sizing: border-box;
+}
+
+/*DAY HOVER*/
+.react-calendar__tile:hover {
+  background-color: var(--calendar-now-bg-hovered);
+  cursor: pointer;
+  color: black;
+}
+
+/*DAY SELECTED*/
+.react-calendar__tile--active {
+  background-color: var(--calendar-selected-bg) !important;
+  color: white !important;
+}
+
+/*DAY SELECTED HOVER*/
+.react-calendar__tile--active:hover {
+  background-color: var(--calendar-selected-bg);
+  color: white;
+}
+
+/*NAVIGATION BUTTONS L/R*/
+.react-calendar__navigation__arrow {
+  height: 46px;
+  width: 46px;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+/*MONTH YEAR LABEL*/
+.react-calendar__navigation__label__labelText {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/*HIGHLIGHT CURRENT DAY*/
+/*.react-calendar__tile--now {*/
+/*  background-color: var(--calendar-now-bg);*/
+/*  color: var(--calendar-now-text);*/
+/*}*/
+
+/*SET BACKGROUND TO NEIGHBOURING DAYS OF MONTH*/
+.react-calendar__month-view__days__day--neighboringMonth {
+  /*background-color: #f6f6f6;*/
+  /*color: #717171;*/
+}
+
+/*SETS BACKGROUND FOR DISABLED DAYS*/
+.react-calendar__tile:disabled {
+  background-color: #ebebeb;
+  cursor: auto;
+}
+
+/*SETS COLOUR OF L/R NAVIGATION BUTTONS*/
+.react-calendar__navigation button:disabled {
+  color: #ccc;
+  opacity: 0.6;
+}
+
+.custom-carousel .slick-prev,
+.custom-carousel .slick-next {
+  top: 15px;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: black;
+}
+
+.custom-carousel .slick-prev {
+  left: -15px;
+}
+
+.custom-carousel .slick-next {
+  right: -15px;
+}
+
+@media (max-width: 450px) {
+  .vehicle-search {
+    padding: 12px;
+  }
+
+  .react-calendar__month-view__weekdays__weekday,
+  .react-calendar__tile {
+    padding: 15px !important;
+    font-size: 14px;
+  }
+}
+
+/*@media (max-width: 440px) {*/
+/*  .react-calendar__month-view__weekdays__weekday {*/
+/*    padding: 10px!important;*/
+/*  }*/
+/*}*/
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+
+.error-message {
+  font-size: 13px;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+
+.warning-message {
+  font-size: 13px;
+  color: rgb(255 165 0 / var(--tw-text-opacity, 1));
+}
+
+#damage-assessment-window path.window,
+#damage-assessment-window g.window {
+  cursor: pointer;
+}
+
+.selected-window,
+.selected-window path {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: var(--brand-primary);
+}
+
+.custom-radio label span {
+}

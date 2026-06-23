@@ -1,0 +1,48 @@
+diff --git a/node_modules/@hubspot/cms-dev-server/dist/run.js b/node_modules/@hubspot/cms-dev-server/dist/run.js
+index dc630fb..a10caf5 100644
+--- a/node_modules/@hubspot/cms-dev-server/dist/run.js
++++ b/node_modules/@hubspot/cms-dev-server/dist/run.js
+@@ -4522,6 +4522,28 @@ function proxyServerlessRequest(req, res, next) {
+     proxyLogArgs.push("with body:", body);
+   }
+   console.log(...proxyLogArgs);
++  const forwardResponse = (response) => {
++    console.log("[PROXY] status:", response.status, "url:", urlToProxy);
++    res.status(response.status);
++    const rawCookies = response.headers.raw ? response.headers.raw()['set-cookie'] : null;
++    if (rawCookies) {
++      rawCookies.forEach((cookie2) => {
++        const rewritten = cookie2
++          .replace(/;\s*domain=[^;]*/gi, '')
++          .replace(/;\s*secure/gi, '')
++          .replace(/;\s*samesite=[^;]*/gi, '; SameSite=Lax');
++        console.log("[PROXY] rewritten cookie:", rewritten.substring(0, 80) + "...");
++        res.append('set-cookie', rewritten);
++      });
++    }
++    const skipHeaders = new Set(['set-cookie', 'content-encoding', 'transfer-encoding', 'content-length']);
++    response.headers.forEach((value, name) => {
++      if (!skipHeaders.has(name.toLowerCase())) {
++        try { res.setHeader(name, value); } catch(e) { /* skip */ }
++      }
++    });
++    response.body.pipe(res);
++  };
+   switch (method) {
+     case "POST":
+     case "DELETE":
+@@ -4530,12 +4552,12 @@ function proxyServerlessRequest(req, res, next) {
+         method,
+         body,
+         headers: headersToPass
+-      }).then((response) => response.body.pipe(res)).catch((err) => console.log(err));
++      }).then(forwardResponse).catch((err) => console.log("[PROXY ERROR]", err));
+       break;
+     default:
+       fetch4(urlToProxy, {
+         headers: headersToPass
+-      }).then((response) => response.body.pipe(res)).catch((err) => console.log(err));
++      }).then(forwardResponse).catch((err) => console.log("[PROXY ERROR]", err));
+   }
+ }
+ 
