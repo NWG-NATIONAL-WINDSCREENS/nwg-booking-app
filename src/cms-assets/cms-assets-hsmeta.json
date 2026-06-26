@@ -3,6 +3,6 @@
   "type": "cms-assets",
   "config": {
     "themePath": "nwg-booking-app",
-    "secretNames": ["GOOGLE_API_KEY", "SIGNING_SECRET"]
+    "secretNames": ["CLIENT_GOOGLE_API_KEY", "SIGNING_SECRET"]
   }
 }

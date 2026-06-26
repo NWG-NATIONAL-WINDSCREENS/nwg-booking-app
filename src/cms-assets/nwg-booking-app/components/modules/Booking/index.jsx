@@ -11,7 +11,7 @@ export const Component = ({ fieldValues }) => {
     preload_state: preloadState,
   } = fieldValues;
   // TODO: Add description
-  const googleMapsAPIKey = getSecret('GOOGLE_API_KEY');
+  const googleMapsAPIKey = getSecret('CLIENT_GOOGLE_API_KEY');
   const signingSecret = getSecret('SIGNING_SECRET');
 
   const secrets = {
