@@ -1,5 +1,5 @@
 {
   "label": "NWG Booking App V2",
   "outputPath": "nwg-booking-app",
-  "secretNames": ["GOOGLE_API_KEY", "SIGNING_SECRET"]
+  "secretNames": ["GOOGLE_API_KEY", "CLIENT_GOOGLE_API_KEY", "SIGNING_SECRET"]
 }
