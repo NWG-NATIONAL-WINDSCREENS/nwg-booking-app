@@ -75,6 +75,14 @@ export default function UserDetailsForm() {
   } = data.user_details;
 
   const popupRef = useRef(null);
+  // Synchronous in-flight latch for createAppointment. `has_booked` (below)
+  // is read from the render closure and only flips true AFTER the POST
+  // resolves, so two calls arriving in the same tick (e.g. the payment
+  // success signal delivered over both postMessage and BroadcastChannel)
+  // both read has_booked === false and both proceed. A ref mutates
+  // synchronously and is visible to the very next call, so it — not state,
+  // and not has_booked — is what actually prevents the double POST.
+  const appointmentInFlightRef = useRef(false);
   const [options, setOptions] = useState([]);
   const [paymentInProgress, setPaymentInProgress] = useState(false);
   const [localToggleAddressAutocomplete, setLocalToggleAddressAutocomplete] =
@@ -197,6 +205,17 @@ export default function UserDetailsForm() {
       // Scroll to the top upon changing the page
       return;
     }
+    // See appointmentInFlightRef declaration above for why has_booked alone
+    // can't guard this: it's a render-closure value only set true after the
+    // POST below resolves, so a second concurrent call still reads false.
+    if (appointmentInFlightRef.current) return;
+    appointmentInFlightRef.current = true;
+
+    // Tracks whether an appointment was actually created, so the `finally`
+    // below only releases the latch on paths that didn't create one — a
+    // failure after the POST must not re-open the door to a duplicate, and
+    // a failure before it must not permanently block a retry.
+    let created = false;
     try {
       const { service_appointment, service_location } = data.user_booking;
 
@@ -264,6 +283,7 @@ export default function UserDetailsForm() {
         // const payload = prepareAppointmentPayload(payload);
 
         await createAppointment(payload).unwrap();
+        created = true;
         // Wait for state to be updated
         await dispatch(setBookingCreated());
         // Then update the state to HubSpot
@@ -276,6 +296,8 @@ export default function UserDetailsForm() {
       }
     } catch (e) {
       console.error('user-details', e);
+    } finally {
+      if (!created) appointmentInFlightRef.current = false;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [createAppointment, data, dispatch, has_booked, submitForm]);

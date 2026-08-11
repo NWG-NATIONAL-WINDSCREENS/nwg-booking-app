@@ -9,17 +9,24 @@ function PaymentSuccessfulIsland({ header }) {
     // BroadcastChannel never reaches it. postMessage over the opener handle is
     // not partitioned. targetOrigin === our own origin because the opener iframe
     // is served from the same host (bookings.nwg.com.au) as this success page.
+    //
+    // These two sends MUST be mutually exclusive (if/else, not two ifs). The
+    // funnel listens on both transports, and createAppointment has no backend
+    // idempotency check — delivering the signal twice creates two HubSpot
+    // appointments for the same booking. window.opener is unaffected by
+    // storage partitioning, so whenever it exists it is the reliable path and
+    // BroadcastChannel would be a pure duplicate, not a fallback.
     if (window.opener) {
       window.opener.postMessage(
         { type: 'paymentSuccess' },
         window.location.origin,
       );
+    } else {
+      // Fallback for same-partition contexts (older browsers / non-iframed funnel).
+      const channel = new BroadcastChannel('nwg-payment');
+      channel.postMessage({ type: 'paymentSuccess' });
+      channel.close();
     }
-
-    // Fallback for same-partition contexts (older browsers / non-iframed funnel).
-    const channel = new BroadcastChannel('nwg-payment');
-    channel.postMessage({ type: 'paymentSuccess' });
-    channel.close();
 
     setTimeout(() => {
       window.close();
